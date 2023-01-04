@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text } from "react-native";
+import EStyleSheet from "react-native-extended-stylesheet";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 export const Error = () => {
@@ -7,7 +8,7 @@ export const Error = () => {
         <View style={styles.container}>
             <View style={styles.textBlock}>
                 <Text style={styles.text}>
-                    Something went wrong
+                    Error internet connection...
                 </Text>
             </View>
             <View>
@@ -17,21 +18,22 @@ export const Error = () => {
     )
 };
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
     container: {
         height: 80,
-        width: 250,
+        width: '80%',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
-        backgroundColor: '#6ED321',
+        backgroundColor: '$backgroundColorAlert',
         position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: [{translateX: -125}, {translateY: -40}],
-        zIndex: 5,
+        borderColor: '$borderColor',
+        borderWidth: 2,
+        top: '10%',
+        left: '10%',
+        zIndex: 8,
     },
     textBlock: {
         paddingRight: 15,
@@ -39,6 +41,6 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 15,
         fontFamily: 'Montserrat-Bold',
-        color: '#fff',
+        color: '$textColor',
     }
 });

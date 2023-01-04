@@ -12,10 +12,11 @@ export const Login = () => {
     const [error, setError] = useState('');
     const Navigation = useNavigation();
 
-    const submitHandler = (value) => {
+    const submitHandler = (value, submitingProps) => {
         const selectUser = users.find(user => user.userEmail === value.email);
         if (!selectUser || !selectUser.password === value.password) {
             setError('your email or password is not correct');
+            submitingProps.resetForm();
             setTimeout(() => setError(''), 3000);
         } else {
             setError('');
@@ -39,7 +40,9 @@ export const Login = () => {
             email: '',
             password: '',
         }}
-        onSubmit={values => submitHandler(values)}
+        onSubmit={(values, submitingProps) => {
+            submitHandler(values, submitingProps)
+        }}
         validationSchema={SignupSchema}
         >
             {({ 
