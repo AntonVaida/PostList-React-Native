@@ -3,6 +3,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Gallery } from "../pages/Gallery";
 import { DetailPhoto } from "../pages/DetailPhoto";
+import { Login } from "../pages/Login";
+import { Posts } from "../pages/Posts";
 
 export const Navigation = () => {
     const Stack = createNativeStackNavigator();
@@ -14,6 +16,14 @@ export const Navigation = () => {
             headerShown: false
           }}
         >
+          <Stack.Screen
+            name="Login"
+            component={Login}
+           />
+          <Stack.Screen
+            name="Posts"
+            component={Posts}
+          />
           <Stack.Screen 
             name='Gallery' 
             component={Gallery}
