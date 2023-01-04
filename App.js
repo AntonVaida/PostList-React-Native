@@ -8,7 +8,7 @@ EStyleSheet.build({
   $textColor: '#fff',
   $backgroundColorAlert: '#5F9EA0',
   $borderColor: '#0000FF',
-  $backgroundColor: '#FFDEAD',
+  $backgroundColor: '#B0C4DE',
   $textColorBlack: '#000',
 });
 

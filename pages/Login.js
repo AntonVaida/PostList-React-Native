@@ -83,7 +83,11 @@ export const Login = () => {
                             <Text style={styles.error}>{error}</Text>
                         </View>
                         <View>
-                            <LoginButton title={'Login'} handler={handleSubmit} />
+                            {(errors.email || errors.password) ? (
+                                <LoginButton title={'Login'} handler={handleSubmit} active={false} />
+                            ) : (
+                                <LoginButton title={'Login'} handler={handleSubmit} active={true} />
+                            )}
                         </View>
                     </View>
                 </View>

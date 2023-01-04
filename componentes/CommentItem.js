@@ -35,7 +35,6 @@ const styles = EStyleSheet.create({
     },
     content: {
         width: '80%',
-        // height: 250,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -52,7 +51,7 @@ const styles = EStyleSheet.create({
         fontFamily: 'Montserrat-Bold',
         color: '$textColorBlack',
         textAlign: 'center',
-        paddingBottom: 20,
+        paddingBottom: 25,
     },
     body: {
         fontSize: 15,
@@ -64,7 +63,7 @@ const styles = EStyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-around',
-        paddingBottom: 20,
+        paddingBottom: 25,
     },
     authorText: {
         fontSize: 15,
