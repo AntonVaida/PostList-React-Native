@@ -6,7 +6,7 @@ export const CommentItem = ({comment}) => {
 
     const openAuthorEmail = () => {
         const urlIst = comment.email;
-        Linking.openURL(urlIst);
+        Linking.openURL(`mailto:${urlIst}`);
     }
 
     return (

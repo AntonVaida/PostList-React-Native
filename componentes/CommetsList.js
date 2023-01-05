@@ -7,13 +7,16 @@ import { HeaderComments } from "./HeaderComments";
 import { Loader } from "./Loader";
 import Snackbar from "react-native-snackbar";
 
-export const CommentsList = ({postId, closeHandler}) => {
+export const CommentsList = ({postId, alertHandler}) => {
     const [commentsList, setCommentsLIst] = useState([]);
     const [errorGetComments, setErrorGetComments] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const setComments = async(id) => {
+    const setComments = async(id, reload) => {
         try {
+            if(reload) {
+                alertHandler(id);
+            }
             setLoading(true);
             const commentsById = await getCommments(id);
             setCommentsLIst(commentsById);
@@ -32,24 +35,24 @@ export const CommentsList = ({postId, closeHandler}) => {
                 action: {
                   text: 'RELOAD',
                   textColor: '#0000FF',
-                  onPress: () => setComments(postId)
+                  onPress: () => setComments(postId, true)
                 },
             });
 
-            closeHandler();
+            alertHandler(0);
         };
     }, [errorGetComments])
 
     useEffect(() => {
-        setComments(postId);
+        setComments(postId, false);
     }, []);
 
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={closeHandler} style={styles.closeBackground} />
+            <TouchableOpacity onPress={() => alertHandler(0)} style={styles.closeBackground} />
             <View style={styles.content}>
-            <HeaderComments closeHandler={closeHandler} />
+            <HeaderComments alertHandler={alertHandler} />
             {!!loading ? (
                 <Loader position={'Comments'} />
             ) : (

@@ -5,10 +5,10 @@ import { TouchableOpacity } from "react-native";
 import EStyleSheet from "react-native-extended-stylesheet";
 
 
-export const HeaderComments = ({closeHandler}) => {
+export const HeaderComments = ({alertHandler}) => {
     return (
         <View style={styles.header}>
-            <TouchableOpacity onPress={closeHandler} style={styles.arrowBack}>
+            <TouchableOpacity onPress={() => alertHandler(0)} style={styles.closeIcon}>
                 <AntDesign name="close" size={18} color="#fff" />
             </TouchableOpacity>
             <View>
@@ -39,7 +39,7 @@ const styles = EStyleSheet.create({
         fontSize: 20,
         color: '$textColor',
     },
-    arrowBack: {
+    closeIcon: {
         position: 'absolute',
         zIndex: 6,
         top: '50%',

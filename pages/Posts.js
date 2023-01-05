@@ -18,9 +18,10 @@ export const Posts = () => {
     const [selectPost, setSelectPost] = useState(0);
     const [errorLoading, setErrorLoading] = useState(false);
     const [internetConnection, setInternetConnection] = useState(false);
+    const [showConectionError, setShowConnectionError] = useState(false)
     const props = useRoute();
 
-    const setLocsleData = async() => {
+    const setLocaleData = async() => {
         const postsData = await FileSystem.readFile(Dirs.DocumentDir + '/posts.json');
         console.log(postsData);
         const posts = JSON.parse(postsData);
@@ -39,14 +40,13 @@ export const Posts = () => {
         } catch(error) {
             setLoading(false);
             setErrorLoading(true)
-            console.log(error);
         }
     }
 
     useEffect(() => {
         if (!internetConnection) {
-            setLocsleData()
-            console.log('LOCALE NOT FOUND')
+            setLocaleData()
+            setShowConnectionError(true)
         }
     }, [internetConnection])
 
@@ -60,6 +60,7 @@ export const Posts = () => {
                   textColor: '#0000FF',
                   onPress: () => setListPosts(Number(props.params.userId)),
                 },
+
             });
         }
     }, [errorLoading])
@@ -71,21 +72,24 @@ export const Posts = () => {
 
     const openComments = (id) => {
         setSelectPost(id);
-        console.log(id);
     }
 
-    const closeComments = () => {
-        setSelectPost(0);
+    const commentsAlert = (value) => {
+        setSelectPost(value);
+    }
+
+    const closeConnectionError = () => {
+        setShowConnectionError(false);
     }
 
     return (
         <View style={styles.container}>
             <HeaderPosts />
-            {!internetConnection && (
-                <Error />
+            {showConectionError && (
+                <Error closeHandler={closeConnectionError} />
             )}
             {!!selectPost && (
-                <CommentsList postId={selectPost} closeHandler={closeComments} />
+                <CommentsList postId={selectPost} alertHandler={commentsAlert} />
             )}
             {!!loding ? (
                 <Loader position={'Posts'} />

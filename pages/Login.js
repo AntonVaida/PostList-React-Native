@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextInput, View, StyleSheet, Button, Text } from "react-native";
+import { TextInput, View, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import users from '../api/users.json'
 import { Formik } from "formik";
@@ -13,14 +13,21 @@ export const Login = () => {
     const Navigation = useNavigation();
 
     const submitHandler = (value, submitingProps) => {
-        const selectUser = users.find(user => user.userEmail === value.email);
-        if (!selectUser || !selectUser.password === value.password) {
-            setError('your email or password is not correct');
+        const selectUser = users.find(user => user.userEmail.toLowerCase() === value.email.toLowerCase());
+        if (selectUser) {
+            const checkPassword = selectUser.password.toLowerCase() === value.password.toLowerCase();
+            if (checkPassword) {
+                setError('');
+                Navigation.navigate('Posts', {userId: selectUser.userId})
+            } else {
+                setError('your password is not correct');
+                submitingProps.resetForm();
+                setTimeout(() => setError(''), 3000);
+            }
+        } else {
+            setError('your email is not correct');
             submitingProps.resetForm();
             setTimeout(() => setError(''), 3000);
-        } else {
-            setError('');
-            Navigation.navigate('Posts', {userId: selectUser.userId})
         }
     }
 

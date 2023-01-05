@@ -1,11 +1,14 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import EStyleSheet from "react-native-extended-stylesheet";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-export const Error = () => {
+export const Error = ({closeHandler}) => {
     return (
         <View style={styles.container}>
+            <TouchableOpacity onPress={closeHandler} style={styles.closeIcon}>
+                <AntDesign name="close" size={18} color="#fff" />
+            </TouchableOpacity>
             <View style={styles.textBlock}>
                 <Text style={styles.text}>
                     Error internet connection...
@@ -26,7 +29,6 @@ const styles = EStyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 20,
         backgroundColor: '$backgroundColorAlert',
         position: 'absolute',
         borderColor: '$borderColor',
@@ -42,5 +44,11 @@ const styles = EStyleSheet.create({
         fontSize: 15,
         fontFamily: 'Montserrat-Bold',
         color: '$textColor',
-    }
+    },
+    closeIcon: {
+        position: 'absolute',
+        zIndex: 6,
+        top: '5%',
+        right: '2%',
+    },
 });
