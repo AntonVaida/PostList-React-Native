@@ -23,7 +23,6 @@ export const Posts = () => {
 
     const setLocaleData = async() => {
         const postsData = await FileSystem.readFile(Dirs.DocumentDir + '/posts.json');
-        console.log(postsData);
         const posts = JSON.parse(postsData);
         setPostList(posts);
     }
@@ -47,6 +46,8 @@ export const Posts = () => {
         if (!internetConnection) {
             setLocaleData()
             setShowConnectionError(true)
+        } else {
+            setShowConnectionError(false)
         }
     }, [internetConnection])
 

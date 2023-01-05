@@ -35,7 +35,7 @@ const styles = EStyleSheet.create({
         borderWidth: 2,
         top: '10%',
         left: '10%',
-        zIndex: 8,
+        zIndex: 2,
     },
     textBlock: {
         paddingRight: 15,
