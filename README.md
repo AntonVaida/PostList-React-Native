@@ -1,4 +1,4 @@
-#I used:
+# I used:
  * formik -for validation LOGIN,
  * react-native-extended-stylesheet -for created style-variables,
  * react-native-snackbar -for created snackbar,
@@ -7,7 +7,7 @@
  * react-native-file-access -for saved locale-data when connection is faled,
  ***
 
-##for LOGIN use - 
+# for LOGIN use - 
 ```
 [
     {
@@ -44,4 +44,4 @@
 ```
 
 ***
- ##DEMO-VIDEO - https://www.loom.com/share/82df804438bb442daa28ead2b29011d7
+ # DEMO-VIDEO - https://www.loom.com/share/82df804438bb442daa28ead2b29011d7
