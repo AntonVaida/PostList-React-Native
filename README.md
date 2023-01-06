@@ -1,10 +1,10 @@
 #I used:
  * formik -for validation LOGIN,
- *react-native-extended-stylesheet -for created style-variables,
- *react-native-snackbar -for created snackbar,
- *react-native-vector-icons/AntDesign -for icons,
- *react-native-community/netinfo -for checking connection,
- *react-native-file-access -for saved locale-data when connection is faled,
+ * react-native-extended-stylesheet -for created style-variables,
+ * react-native-snackbar -for created snackbar,
+ * react-native-vector-icons/AntDesign -for icons,
+ * react-native-community/netinfo -for checking connection,
+ * react-native-file-access -for saved locale-data when connection is faled,
  ***
 
 ##for LOGIN use - 
